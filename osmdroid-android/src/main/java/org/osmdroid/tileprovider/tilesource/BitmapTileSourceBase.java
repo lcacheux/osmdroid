@@ -102,6 +102,7 @@ public abstract class BitmapTileSourceBase implements ITileSource,
 			// a BitmapDrawable from it
 			BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
 			BitmapPool.getInstance().applyReusableOptions(bitmapOptions);
+			bitmapOptions.inPreferredConfig = Bitmap.Config.RGB_565;
 			final Bitmap bitmap = BitmapFactory.decodeFile(aFilePath, bitmapOptions);
 			if (bitmap != null) {
 				return new ReusableBitmapDrawable(bitmap);
@@ -141,6 +142,7 @@ public abstract class BitmapTileSourceBase implements ITileSource,
 			// a BitmapDrawable from it
 			BitmapFactory.Options bitmapOptions = new BitmapFactory.Options();
 			BitmapPool.getInstance().applyReusableOptions(bitmapOptions);
+			bitmapOptions.inPreferredConfig = Bitmap.Config.RGB_565;
 			final Bitmap bitmap = BitmapFactory.decodeStream(aFileInputStream, null, bitmapOptions);
 			if (bitmap != null) {
 				return new ReusableBitmapDrawable(bitmap);

@@ -339,7 +339,7 @@ public abstract class MapTileProviderBase implements IMapTileProviderCallback,
 				Bitmap bitmap = BitmapPool.getInstance().obtainSizedBitmapFromPool(
 						pTileSizePx, pTileSizePx);
 				if (bitmap == null)
-					bitmap = Bitmap.createBitmap(pTileSizePx, pTileSizePx, Bitmap.Config.ARGB_8888);
+					bitmap = Bitmap.createBitmap(pTileSizePx, pTileSizePx, Bitmap.Config.RGB_565);
 
 				final Canvas canvas = new Canvas(bitmap);
 				final boolean isReusable = oldDrawable instanceof ReusableBitmapDrawable;
@@ -401,7 +401,7 @@ public abstract class MapTileProviderBase implements IMapTileProviderCallback,
 										pTileSizePx, pTileSizePx);
 								if (bitmap == null)
 									bitmap = Bitmap.createBitmap(pTileSizePx, pTileSizePx,
-										Bitmap.Config.ARGB_8888);
+										Bitmap.Config.RGB_565);
 								canvas = new Canvas(bitmap);
 								canvas.drawColor(Color.LTGRAY);
 							}

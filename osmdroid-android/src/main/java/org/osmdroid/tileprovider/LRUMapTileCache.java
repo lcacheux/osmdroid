@@ -40,13 +40,10 @@ public class LRUMapTileCache extends LinkedHashMap<MapTile, Drawable>
 	@Override
 	public Drawable remove(final Object aKey) {
 		final Drawable drawable = super.remove(aKey);
-		// Only recycle if we are running on a project less than 2.3.3 Gingerbread.
-		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.GINGERBREAD) {
-			if (drawable instanceof BitmapDrawable) {
-				final Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
-				if (bitmap != null) {
-					bitmap.recycle();
-				}
+		if (drawable instanceof BitmapDrawable) {
+			final Bitmap bitmap = ((BitmapDrawable) drawable).getBitmap();
+			if (bitmap != null) {
+				bitmap.recycle();
 			}
 		}
 		if (getTileRemovedListener() != null && aKey instanceof MapTile)
